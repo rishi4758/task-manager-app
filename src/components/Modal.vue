@@ -24,7 +24,7 @@ export default {
   /* width: 480px;
   height: 520px; */
   position: absolute;
-  z-index: 200;
+  z-index: 9999;
   background-color: rgba(255, 255, 255, 1);
   opacity: 100%;
   padding: 10px;
