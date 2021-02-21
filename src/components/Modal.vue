@@ -25,6 +25,7 @@ export default {
   height: 520px; */
   position: absolute;
   z-index: 9999;
+  left: 10%;
   background-color: rgba(255, 255, 255, 1);
   opacity: 100%;
   padding: 10px;

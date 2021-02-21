@@ -1,18 +1,19 @@
 <template>
-  <div class="modal"><slot></slot></div>
+  <div class="blur"><slot></slot></div>
 </template>
 <script>
 export default {
-  name: "Blur"
+  name: "Blur",
 };
 </script>
 <style scoped>
-.modal {
-  position:fixed;
-  z-index:1;
+.blur {
+  position: absolute;
+  z-index: 1;
   top: 0;
   left: 0;
   display: flex;
+  justify-content: "center";
   box-sizing: border-box;
   height: 100%;
   width: 100%;
