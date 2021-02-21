@@ -1,7 +1,7 @@
 <template>
   <div>
     <Modal :set_modal="set_modal">
-      <div style="height:520px; width:480px">
+      <div style="height:520px; width:480px" slot="model">
         <Header :set_modal="set_modal" title="<Title Task>" />
         <form class="form" style="flex:1;" v-on:submit="this.editTask">
           <div class="form-group">
@@ -92,20 +92,20 @@ export default {
   props: ["e_id", "set_modal"],
   components: {
     Modal: Modal,
-    Header: Header
+    Header: Header,
   },
   methods: {
     editTask(e) {
       e.preventDefault();
       store.dispatch(EDIT_LIST, this.editObject);
       this.set_modal();
-    }
+    },
   },
   computed: {
     editObject() {
       return store.getters.getItem(this.e_id);
-    }
-  }
+    },
+  },
 };
 </script>
 <style scoped>

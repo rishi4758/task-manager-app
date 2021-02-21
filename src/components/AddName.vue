@@ -4,6 +4,7 @@
       style="padding:10px position:relative; "
       v-on:submit="setName"
       required
+      slot="model"
     >
       <div style="text-align:center">
         <h3>please enter your name</h3>
@@ -21,7 +22,7 @@ export default {
   name: "AddName",
   props: ["set_modal"],
   components: {
-    Modal: Modal
+    Modal: Modal,
   },
   data() {
     return { myName: "" };
@@ -30,7 +31,7 @@ export default {
     setName() {
       sessionStorage.setItem("name", this.myName);
       this.set_modal();
-    }
+    },
   },
   mounted() {
     const a = sessionStorage.getItem("name");
@@ -41,8 +42,8 @@ export default {
   computed: {
     style() {
       return "height:" + "50px";
-    }
-  }
+    },
+  },
 };
 </script>
 <style scoped>

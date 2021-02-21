@@ -4,7 +4,7 @@
       <Blur></Blur>
     </div>
 
-    <div class="taskContainer"><slot></slot></div>
+    <div class="taskContainer"><slot name="model"></slot></div>
   </div>
 </template>
 <script>
@@ -13,8 +13,8 @@ export default {
   name: "Modal",
   props: ["set_modal", "nameheight"],
   components: {
-    Blur
-  }
+    Blur,
+  },
 };
 </script>
 <style scoped>

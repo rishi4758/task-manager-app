@@ -1,6 +1,6 @@
 <template>
   <Modal :set_modal="set_modal">
-    <div class="container" style="height:520px; width:480px">
+    <div class="container" style="height:520px; width:480px" slot="model">
       <Header :set_modal="set_modal" title="New Task"></Header>
 
       <form class="form" v-on:submit="this.submitForm">
@@ -104,7 +104,7 @@ export default {
   name: "AddTask",
   components: {
     Modal,
-    Header
+    Header,
   },
   props: ["set_modal", "commentView"],
   data() {
@@ -117,7 +117,7 @@ export default {
       year: "",
       priority: "",
       isName: false,
-      comments: { name: "", time: null, description: null }
+      comments: { name: "", time: null, description: null },
     };
   },
   methods: {
@@ -130,7 +130,7 @@ export default {
         "Wednesday ",
         "Thursday",
         "Friday",
-        "Saturday"
+        "Saturday",
       ];
       const time =
         daylist[date.getUTCDay()] +
@@ -152,13 +152,13 @@ export default {
         comments: {
           name: sessionStorage.getItem("name"),
           time: exactTime,
-          commentData: this.comments.description
-        }
+          commentData: this.comments.description,
+        },
       });
 
       this.set_modal();
-    }
-  }
+    },
+  },
 };
 </script>
 <style scoped>
