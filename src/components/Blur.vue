@@ -8,7 +8,7 @@ export default {
 </script>
 <style scoped>
 .blur {
-  position: fixed;
+  position: absolute;
   z-index: 0;
   top: 0;
   left: 0;
