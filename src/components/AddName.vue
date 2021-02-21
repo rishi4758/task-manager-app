@@ -1,11 +1,6 @@
 <template>
-  <Modal style="margin-left:50px;" :set_modal="set_modal">
-    <form
-      style="padding:10px position:relative; "
-      v-on:submit="setName"
-      required
-      slot="model"
-    >
+  <Modal :set_modal="set_modal">
+    <form v-on:submit="setName" required slot="model">
       <div style="text-align:center">
         <h3>please enter your name</h3>
         <input type="text" class="input" v-model="myName" required />

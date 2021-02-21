@@ -1,28 +1,27 @@
 <template>
-  <div style=" text-align: start;">
-    <Modal :set_modal="set_modal">
-      <div style=" height:auto;padding:10px; min-height:520px; width:480px">
-        <Header :set_modal="set_modal" title="<Title Task>" />
+  <Modal :set_modal="set_modal">
+    <div class="container" slot="model">
+      <Header :set_modal="set_modal" title="<Title Task>" />
 
-        <div class="description">{{ this.list.description }}</div>
-        <div class="DandP">
-          <div>
-            <span style="font-family:'Proxima Nova';font-weight:700;"
-              >Date: </span
-            ><span>{{
-              this.list.day + "/" + this.list.month + "/" + this.list.year
-            }}</span>
-          </div>
-          <div>
-            <span style="font-family:'Proxima Nova';font-weight:700;"
-              >Priority: </span
-            ><span>{{ this.list.priority }}</span>
-          </div>
+      <div class="description">{{ this.list.description }}</div>
+      <div class="DandP">
+        <div>
+          <span style="font-family:'Proxima Nova';font-weight:700;">Date: </span
+          ><span>{{
+            this.list.day + "/" + this.list.month + "/" + this.list.year
+          }}</span>
         </div>
-        <div class="line1">
-          <img class="img1 " src="../../public/assets/line.png" />
+        <div>
+          <span style="font-family:'Proxima Nova';font-weight:700;"
+            >Priority: </span
+          ><span>{{ this.list.priority }}</span>
         </div>
+      </div>
+      <div class="line1">
+        <img class="img1 " src="../../public/assets/line.png" />
+      </div>
 
+      <div class="commentCont">
         <div
           v-for="cm in this.commentObj"
           v-bind:key="cm.id"
@@ -33,21 +32,19 @@
 
           <div>{{ cm.commentData }}</div>
         </div>
-        <form class="footer" v-on:submit="addComment(list.id, value)">
-          <div>
-            <input type="text" v-model="value" class="addComment" required />
-          </div>
-          <div
-            style="display:flex; flex-direction:row; justifyContent:flex-end;"
-          >
-            <button type="submit" class="addBtn">
-              <span>Add Comment</span>
-            </button>
-          </div>
-        </form>
       </div>
-    </Modal>
-  </div>
+      <form class="footer" v-on:submit="addComment(list.id, value)">
+        <div>
+          <input type="text" v-model="value" class="addComment" required />
+        </div>
+        <div style="display:flex; flex-direction:row; justifyContent:flex-end;">
+          <button type="submit" class="addBtn">
+            <span>Add Comment</span>
+          </button>
+        </div>
+      </form>
+    </div>
+  </Modal>
 </template>
 <script>
 import { INSERT_COMMENT } from "../store/actions.type";
@@ -60,7 +57,7 @@ export default {
   props: ["c_id", "set_modal"],
   components: {
     Modal: Modal,
-    Header
+    Header,
   },
   data() {
     return { value: null };
@@ -75,7 +72,7 @@ export default {
         "Wednesday ",
         "Thursday",
         "Friday",
-        "Saturday"
+        "Saturday",
       ];
       const time =
         daylist[date.getUTCDay()] +
@@ -90,10 +87,10 @@ export default {
         id: this.list.id,
         name: sessionStorage.getItem("name"),
         time: exactTime,
-        commentData: value
+        commentData: value,
       });
       this.set_modal();
-    }
+    },
   },
   computed: {
     list() {
@@ -101,17 +98,28 @@ export default {
     },
     commentObj() {
       return store.getters.getComments(this.c_id);
-    }
-  }
+    },
+  },
 };
 </script>
 <style scoped>
+.container {
+  height: 520px;
+  width: 480px;
+  /* overflow: scroll; */
+}
 .upar {
   position: relative;
   z-index: 200;
   display: flex;
   justify-content: space-between;
   margin-top: 2px;
+}
+.commentCont {
+  height: 160px;
+  overflow: scroll;
+  margin-top: 15px;
+  overflow: scroll;
 }
 .title {
   margin-top: 2px;
@@ -149,9 +157,7 @@ export default {
   color: #333333;
   line-height: normal;
 }
-.givenComments {
-  margin-top: 15px;
-}
+
 .footer {
   display: flex;
   justify-content: space-around;

@@ -10,20 +10,20 @@
       <div class="line1">
         <img class="myImage" src="../../public/assets/line.png" />
       </div>
-
+      <div class="modalCont" v-if="isModal && isTask">
+        <AddTask :set_modal="taskScreen" />
+      </div>
       <div>
         <TaskList :commentView="commentScreen" :editView="editScreen" />
       </div>
-      <div v-if="isName === true">
+      <div class="modalCont" v-if="isName === true">
         <AddName :set_modal="nameScreen" />
       </div>
-      <div v-if="isModal && isTask">
-        <AddTask :set_modal="taskScreen" />
-      </div>
-      <div v-if="isModal && isComment">
+
+      <div class="modalCont" v-if="isModal && isComment">
         <Comment :set_modal="commentScreen" :c_id="commentId" />
       </div>
-      <div v-if="isModal && isEdit">
+      <div class="modalCont" v-if="isModal && isEdit">
         <EditItem :set_modal="editScreen" :e_id="editId" />
       </div>
 
@@ -38,7 +38,7 @@
   </div>
 </template>
 
-    <script>
+<script>
 import AddTask from "./AddTask";
 import TaskList from "./TaskList";
 import Comment from "./AddComment";
@@ -61,7 +61,7 @@ export default {
       isComment: false,
       isEdit: false,
       commentId: null,
-      editId: null
+      editId: null,
     };
   },
 
@@ -82,34 +82,30 @@ export default {
       this.editId = eId;
       this.isModal = !this.isModal;
       this.isEdit = !this.isEdit;
-    }
+    },
   },
   computed: {
     myList() {
       return store.getters.list;
-    }
-  }
+    },
+  },
 };
 </script>
 
-    <style scoped>
-.parentList {
-  flex-grow: 1;
-  justify-self: center;
-  justify-content: center;
-  align-items: center;
-  align-self: center;
-}
+<style scoped>
 .myImage {
   width: 0px;
 }
 .listContainer {
+  position: relative;
+  flex: 1;
+  justify-content: center;
+  align-items: center;
   margin-top: 25px;
   border-width: 0px;
   display: inline-block;
   width: 900px;
   max-width: 600px;
-  height: auto;
   min-height: 800px;
   max-height: auto;
   background: inherit;
@@ -119,18 +115,12 @@ export default {
   border-style: solid;
   border-color: rgba(214, 214, 214, 1);
   border-radius: 0px;
-  -moz-box-shadow: none;
-  -webkit-box-shadow: none;
   box-shadow: none;
   padding: 10px;
-  position: relative;
-  z-index: 0;
-  flex: 1;
-  justify-content: center;
-  align-items: center;
 }
 
 .header {
+  position: inherit;
   display: flex;
   flex-direction: row;
   justify-content: space-between;
@@ -140,6 +130,14 @@ export default {
   margin-bottom: 20px;
 }
 
+.modalCont {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  z-index: 1;
+  bottom: 0;
+  top: 0;
+}
 .title {
   border-width: 0px;
   left: 20px;
@@ -193,6 +191,7 @@ export default {
 }
 
 .line1 {
+  position: relative;
   border-width: 0px;
   margin-bottom: 15px;
   left: 10px;

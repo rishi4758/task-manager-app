@@ -1,6 +1,6 @@
 <template>
-  <div class="modal">
-    <div class="taskContainer"><slot name="model"></slot></div>
+  <div class="taskContainer">
+    <div class="modal"><slot name="model"></slot></div>
     <div v-on:click="set_modal">
       <Blur></Blur>
     </div>
@@ -18,16 +18,20 @@ export default {
 </script>
 <style scoped>
 .taskContainer {
-  top: 15%;
-
-  /* width: 480px;
-  height: 520px; */
-  position: absolute;
-  z-index: 999;
-  left: 10%;
+  width: 100%;
+  height: 100vh;
+  position: relative;
   background-color: rgba(255, 255, 255, 1);
   opacity: 100%;
   padding: 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.modal {
+  position: absolute;
+  z-index: 999;
+  background: #ffffff;
 }
 nameContainer {
   height: 50px;

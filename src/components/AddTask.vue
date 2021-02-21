@@ -1,9 +1,9 @@
 <template>
   <Modal :set_modal="set_modal">
-    <div class="container" style="height:520px; width:480px" slot="model">
+    <div class="container" slot="model">
       <Header :set_modal="set_modal" title="New Task"></Header>
 
-      <form class="form" v-on:submit="this.submitForm">
+      <form v-on:submit="this.submitForm">
         <div class="form-group">
           <div>Title:</div>
           <input type="text" class="input" v-model="title" required />
@@ -162,8 +162,9 @@ export default {
 };
 </script>
 <style scoped>
-container {
-  position: absolute;
+.container {
+  height: 520px;
+  width: 480px;
 }
 .upar {
   position: relative;

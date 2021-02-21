@@ -9,14 +9,16 @@ export default {
 <style scoped>
 .blur {
   position: absolute;
-  z-index: 0;
+  z-index: 1;
   top: 0;
   left: 0;
-  display: flex;
-  justify-content: "center";
-  box-sizing: border-box;
   height: 100%;
   width: 100%;
+  display: flex;
+
+  justify-content: "center";
+  box-sizing: border-box;
+
   background-color: black;
   opacity: 0.7;
 }

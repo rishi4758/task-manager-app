@@ -12,7 +12,7 @@
 
   display: flex;
   flex-direction: column;
-  position:relative;
+  position: relative;
   background-color: rgba(240, 240, 240, 1);
 }
 </style>

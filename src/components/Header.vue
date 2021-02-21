@@ -10,13 +10,13 @@
 <script>
 export default {
   name: "Header",
-  props: ["set_modal", "title"]
+  props: ["set_modal", "title"],
 };
 </script>
 <style scoped>
 .upar {
   position: relative;
-  z-index: 200;
+
   display: flex;
   justify-content: space-between;
   margin-top: 2px;
@@ -48,4 +48,3 @@ export default {
   }
 }
 </style>
-
