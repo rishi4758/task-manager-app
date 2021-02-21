@@ -1,10 +1,9 @@
 <template>
   <div class="modal">
+    <div class="taskContainer"><slot name="model"></slot></div>
     <div v-on:click="set_modal">
       <Blur></Blur>
     </div>
-
-    <div class="taskContainer"><slot name="model"></slot></div>
   </div>
 </template>
 <script>
@@ -24,7 +23,7 @@ export default {
   /* width: 480px;
   height: 520px; */
   position: absolute;
-  z-index: 9999;
+  z-index: 999;
   left: 10%;
   background-color: rgba(255, 255, 255, 1);
   opacity: 100%;
